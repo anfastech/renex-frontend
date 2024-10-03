@@ -1,9 +1,10 @@
 
+
 export default function HeroSection() {
     return (
         <section
             className="bg-cover bg-center h-64 relative"
-            style={{ backgroundImage: "url('https://static.ieplads.com/bmsjs/banners/99acres-hp/1366/1366-ss-kiavasa.jpg')" }} // Use correct path
+            style={{ backgroundImage: "url('/images/banner.png')", backgroundPosition: "top", backgroundRepeat: "repeat", backgroundSize: "contain"}} // Use correct path
         >
             {/* Overlay */}
             <div className="absolute inset-0 bg-black bg-opacity-10"></div>
