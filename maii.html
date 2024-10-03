@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Property Search</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    
+</head>
+<body>
+
+ <!-- Wrapper -->
+<div class="bg-gray-50 py-6">
+
+    <!-- Banner Section -->
+    <section class="bg-cover bg-center h-64 sm:h-80 lg:h-96 relative"
+      style="background-image: url('/mnt/data/A_real_estate_banner_image_featuring_a_beautiful_m.png')">
+      <!-- Overlay -->
+      <div class="absolute inset-0 bg-black bg-opacity-20"></div>
+  
+      <!-- Content -->
+      <div class="container mx-auto relative z-10 h-full flex items-center justify-center">
+        <div class="text-white text-3xl sm:text-4xl lg:text-5xl font-bold text-center">
+          #KabTakPuchoge
+        </div>
+      </div>
+    </section>
+  
+    <!-- Filters and Search Section -->
+    <section class="container mx-auto mt-6 bg-white rounded-lg shadow-md p-6">
+      <!-- Filters Tabs -->
+      <div class="flex flex-wrap space-x-4 mb-6 overflow-x-auto scrollbar-hide">
+        <ul class="flex w-full space-x-4">
+          <li class="text-gray-500 border-b-2 border-transparent pb-2 hover:border-blue-600 hover:text-blue-600 transition-colors cursor-pointer whitespace-nowrap">Buy</li>
+          <li class="text-gray-500 border-b-2 border-transparent pb-2 hover:border-blue-600 hover:text-blue-600 transition-colors cursor-pointer whitespace-nowrap">Rent</li>
+          <li class="text-gray-500 border-b-2 border-transparent pb-2 hover:border-blue-600 hover:text-blue-600 transition-colors cursor-pointer whitespace-nowrap">New Launch</li>
+          <li class="text-gray-500 border-b-2 border-transparent pb-2 hover:border-blue-600 hover:text-blue-600 transition-colors cursor-pointer whitespace-nowrap">PG / Co-living</li>
+          <li class="text-gray-500 border-b-2 border-transparent pb-2 hover:border-blue-600 hover:text-blue-600 transition-colors cursor-pointer whitespace-nowrap">Commercial</li>
+          <li class="text-gray-500 border-b-2 border-transparent pb-2 hover:border-blue-600 hover:text-blue-600 transition-colors cursor-pointer whitespace-nowrap">Plots/Land</li>
+          <li class="text-gray-500 border-b-2 border-transparent pb-2 hover:border-blue-600 hover:text-blue-600 transition-colors cursor-pointer whitespace-nowrap">Projects</li>
+        </ul>
+      </div>
+  
+      <!-- Search Bar -->
+      <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 mb-4">
+        <div class="relative flex-1">
+          <input type="text" class="w-full border border-gray-300 rounded-lg p-3 pl-10 focus:border-blue-600 focus:ring-2 focus:ring-blue-600 outline-none transition" placeholder="Search 'Tirur'" />
+          <svg class="absolute top-3 left-3 w-6 h-6 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 6a5 5 0 100 10 5 5 0 000-10zM21 21l-4.35-4.35" />
+          </svg>
+        </div>
+        <button class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg w-full sm:w-auto transition-colors" aria-label="Search">
+          Search
+        </button>
+      </div>
+    </section>
+  
+    <!-- Continue Browsing Section with Horizontal Scrolling -->
+    <section class="container mx-auto mt-6">
+      <div id="slider" class="flex space-x-4 overflow-x-auto scroll-smooth scrollbar-hide">
+        <!-- Individual Buttons -->
+        <button class="bg-blue-100 text-blue-500 px-4 py-2 rounded-full w-auto hover:bg-blue-500 hover:text-white transition-colors whitespace-nowrap">Rent in Tirur</button>
+        <button class="bg-blue-100 text-blue-500 px-4 py-2 rounded-full w-auto hover:bg-blue-500 hover:text-white transition-colors whitespace-nowrap">Buy in Central Delhi</button>
+        <button class="bg-blue-100 text-blue-500 px-4 py-2 rounded-full w-auto hover:bg-blue-500 hover:text-white transition-colors whitespace-nowrap">Buy in Malappuram</button>
+        <button class="bg-blue-100 text-blue-500 px-4 py-2 rounded-full w-auto hover:bg-blue-500 hover:text-white transition-colors whitespace-nowrap">Rent in Kerala</button>
+        <button class="bg-blue-100 text-blue-500 px-4 py-2 rounded-full w-auto hover:bg-blue-500 hover:text-white transition-colors whitespace-nowrap">Rent in Hyderabad</button>
+        <button class="bg-blue-50 text-blue-500 px-4 py-2 rounded-full w-auto hover:bg-blue-500 hover:text-white transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 512" width="16" class="text-blue-500 fill-current">
+            <path d="M64 360a56 56 0 1 0 0 112 56 56 0 1 0 0-112zm0-160a56 56 0 1 0 0 112 56 56 0 1 0 0-112zM120 96A56 56 0 1 0 8 96a56 56 0 1 0 112 0z" />
+          </svg>
+        </button>
+      </div>
+  
+      <!-- Optional Arrow Buttons for Scrolling -->
+      <div class="flex justify-between mt-4">
+        <button id="scrollLeft" class="bg-gray-200 px-4 py-2 rounded-full hover:bg-gray-400">←</button>
+        <button id="scrollRight" class="bg-gray-200 px-4 py-2 rounded-full hover:bg-gray-400">→</button>
+      </div>
+    </section>
+  
+  </div>
+  
+  <!-- JavaScript for Scroll Control -->
+  <script>
+    const slider = document.getElementById('slider');
+    const scrollLeft = document.getElementById('scrollLeft');
+    const scrollRight = document.getElementById('scrollRight');
+  
+    scrollLeft.addEventListener('click', () => {
+      slider.scrollBy({ left: -200, behavior: 'smooth' });
+    });
+  
+    scrollRight.addEventListener('click', () => {
+      slider.scrollBy({ left: 200, behavior: 'smooth' });
+    });
+  
+    plugins: [
+      require('tailwind-scrollbar-hide')
+    ]
+  </script>
+  
+
+</body>
+</html>

@@ -1,3 +1,5 @@
+"use client"
+
 // import Header from "./components/Header";
 import SearchAndFilters from "./components/SearchAndFilters";
 import HeroSection from "./components/HeroSection";
@@ -11,6 +13,8 @@ import RentalCollection from "./components/RentalCollection";
 import TopCities from "./components/TopCities";
 import NewsletterSubscription from "./components/NewsletterSubscription";
 import Header from "@/components/Header";
+import SearchBar from "./components/SearchBar";
+import ContSearch from "./components/ContSearch";
 // import Header from "./components/Header";
 export default function HomePage() {
     return (
@@ -20,7 +24,9 @@ export default function HomePage() {
             {/* Hero Section */}
             <HeroSection />
             {/* SearchAndFilters */}
-            <SearchAndFilters />
+            <SearchBar />
+            {/* <SearchAndFilters /> */}
+            <ContSearch />
             {/* RealEstateOptions */}
             <RealEstateOptions />
             {/* ThreeStepsSection */}
