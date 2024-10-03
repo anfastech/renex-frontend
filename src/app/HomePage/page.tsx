@@ -1,7 +1,7 @@
 "use client"
 
 // import Header from "./components/Header";
-import SearchAndFilters from "./components/SearchAndFilters";
+// import SearchAndFilters from "./components/SearchAndFilters";
 import HeroSection from "./components/HeroSection";
 import RealEstateOptions from "./components/RealEstateOptions";
 import ThreeStepsSection from "./components/ThreeStepsSection";
