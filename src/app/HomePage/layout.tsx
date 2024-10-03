@@ -10,3 +10,13 @@
 //       </div>
 //   );
 // }
+// src/app/HomePage/layout.tsx
+
+export default function HomePageLayout({ children }: { children: React.ReactNode }) {
+    return (
+        <div>
+            {/* Any shared layout like headers, sidebars, etc. */}
+            {children}
+        </div>
+    );
+}
