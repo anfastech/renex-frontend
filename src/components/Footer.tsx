@@ -10,7 +10,7 @@ export default function Footer() {
                 {/* Home Icon */}
                 <div className="text-center">
                     <button className="focus:outline-none hover:text-blue-600 active:text-blue-600">
-                        <FontAwesomeIcon icon={faHouse} className="text-blue-600" />
+                        <FontAwesomeIcon icon={faHouse} fixedWidth size="lg" className="text-blue-600" />
                         <p className="text-[10px] md:text-xs font-semibold">Home</p>
                     </button>
                 </div>
@@ -18,7 +18,7 @@ export default function Footer() {
                 {/* Insights Icon */}
                 <div className="text-center">
                     <button className="focus:outline-none hover:text-blue-600 active:text-blue-600"> 
-                        <FontAwesomeIcon icon={faLightbulb} />
+                        <FontAwesomeIcon icon={faLightbulb} fixedWidth size="lg" />
                         <p className="text-[10px] md:text-xs">Insights</p>
                     </button>
                 </div>
@@ -26,7 +26,7 @@ export default function Footer() {
                 {/* Shortlisted Icon */}
                 <div className="text-center">
                     <button className="focus:outline-none hover:text-blue-600 active:text-blue-600"> 
-                        <FontAwesomeIcon icon={faStar} />
+                        <FontAwesomeIcon icon={faStar} fixedWidth size="lg" />
                         <p className="text-[10px] md:text-xs">Shortlisted</p>
                     </button>
                 </div>
@@ -34,7 +34,7 @@ export default function Footer() {
                 {/* Activity Icon */}
                 <div className="text-center">
                     <button className="focus:outline-none hover:text-blue-600 active:text-blue-600"> 
-                        <FontAwesomeIcon icon={faChartLine} />
+                        <FontAwesomeIcon icon={faChartLine} fixedWidth size="lg" />
                         <p className="text-[10px] md:text-xs">Activity</p>
                     </button>
                 </div>
@@ -42,7 +42,7 @@ export default function Footer() {
                 {/* Profile Icon */}
                 <div className="text-center">
                     <button className="focus:outline-none hover:text-blue-600 active:text-blue-600"> 
-                        <FontAwesomeIcon icon={faAddressCard} />
+                        <FontAwesomeIcon icon={faAddressCard} fixedWidth size="lg" />
                         <p className="text-[10px] md:text-xs">Profile</p>
                     </button>
                 </div>
