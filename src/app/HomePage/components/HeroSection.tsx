@@ -1,19 +1,21 @@
 
-
 export default function HeroSection() {
     return (
-        <section
-            className="bg-cover bg-center h-64 relative"
-            style={{ backgroundImage: "url('/images/banner.png')", backgroundPosition: "top", backgroundRepeat: "repeat", backgroundSize: "contain"}} // Use correct path
-        >
-            {/* Overlay */}
-            <div className="absolute inset-0 bg-black bg-opacity-10"></div>
+        <>
+            {/* Gap */}
+            <div className="h-8"></div>
+            <div className="h-4"></div>
 
-            {/* Content */}
-            <div className="container mx-auto relative z-10 h-full flex items-center">
-                {/* Placeholder for text or content */}
-                {/* <div className="text-white text-4xl font-bold">#KabTakPuchoge</div> */}
+            {/* App Title and Head Ads */}
+            <div className="relative text-center mb-8 bg-white h-64 main-1"> {/* Set height here */}
+                {/* Gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-r from-white to-transparent opacity-100 flex items-center z-2">
+                    <h1 className="absolute left-5 text-4xl font-bold text-black">Renex</h1>
+                </div>
+                <div className="absolute bottom-0 right-0 mb-0 mr-0 z-0">
+                    <img src="/images/headeeAds.PNG" alt="BHK Image" className="w-56 h-56 object-cover" /> {/* Image in bottom right */}
+                </div>
             </div>
-        </section>
-    )
+        </>
+    );
 }

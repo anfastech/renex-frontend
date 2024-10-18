@@ -1,6 +1,7 @@
 import Footer from "@/components/Footer";
 import HomePage from "./HomePage/page";
 import NamesComponent from "./Projects/components/NamesCard";
+import RenexCard from "@/components/RenexCard";
 // import Image from "next/image";
 
 export default function Home() {
@@ -8,6 +9,7 @@ export default function Home() {
     <>
       <NamesComponent />
       <HomePage />
+      <RenexCard />
       <Footer />
     </>
   );

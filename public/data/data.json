@@ -1,0 +1,118 @@
+[
+    {
+        "id": "a1",
+        "paid_ad": true,
+        "location": {
+            "city": "Ponnani",
+            "address": "123 Main St"
+        },
+        "transactionType": "rent",
+        "propertyType": "Building",
+        "image": {
+            "url": "project-1.png",
+            "alt": "Building in Ponnani"
+        },
+        "price": 1500,
+        "features": ["Balcony", "Parking", "Garden"],
+        "available": true
+    },
+    {
+        "id": "a2",
+        "paid_ad": true,
+        "location": {
+            "city": "Tirur",
+            "address": "456 High St"
+        },
+        "transactionType": "buy",
+        "propertyType": "Apartment",
+        "image": {
+            "url": "project-2.png",
+            "alt": "Apartment in Tirur"
+        },
+        "price": 300000,
+        "features": ["Garage", "Swimming Pool"],
+        "available": false
+    },
+    {
+        "id": "a3",
+        "location": {
+            "city": "Tirur",
+            "address": "789 Lake View"
+        },
+        "transactionType": "buy",
+        "propertyType": "Apartment",
+        "image": {
+            "url": "project-2.png",
+            "alt": "Apartment in Tirur"
+        },
+        "price": 280000,
+        "features": ["Terrace", "Near School"],
+        "available": true
+    },
+    {
+        "id": "a2",
+        "paid_ad": true,
+        "location": {
+            "city": "Tirur",
+            "address": "456 High St"
+        },
+        "transactionType": "rent",
+        "propertyType": "Apartment",
+        "image": {
+            "url": "project-2.png",
+            "alt": "Apartment in Tirur"
+        },
+        "price": 300000,
+        "features": ["Garage", "Swimming Pool"],
+        "available": false
+    },
+    {
+        "id": "a3",
+        "location": {
+            "city": "Tirur",
+            "address": "789 Lake View"
+        },
+        "transactionType": "rent",
+        "propertyType": "Apartment",
+        "image": {
+            "url": "project-2.png",
+            "alt": "Apartment in Tirur"
+        },
+        "price": 280000,
+        "features": ["Terrace", "Near School"],
+        "available": true
+    },
+    {
+        "id": "a2",
+        "location": {
+            "city": "Tirur",
+            "address": "456 High St"
+        },
+        "transactionType": "buy",
+        "propertyType": "Apartment",
+        "image": {
+            "url": "project-2.png",
+            "alt": "Apartment in Tirur"
+        },
+        "price": 300000,
+        "features": ["Garage", "Swimming Pool"],
+        "available": false
+    },
+    {
+        "id": "a3",
+        "location": {
+            "city": "Tirur",
+            "address": "789 Lake View"
+        },
+        "transactionType": "sell",
+        "propertyType": "Apartment",
+        "image": {
+            "url": "project-2.png",
+            "alt": "Apartment in Tirur"
+        },
+        "price": 280000,
+        "features": ["Terrace", "Near School"],
+        "available": true
+    }
+]
+

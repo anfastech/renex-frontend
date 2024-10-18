@@ -2,10 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-.wrapper{
+.wrapper {
   width: 90%;
   margin: 0 auto;
 }
+
 /* <div class="w-[50%]">
 <h1 class="bg-blue-600 py-[2%] px-[4%]">POST YOUR PROPERTY for FREE</h1>
 
@@ -18,9 +19,23 @@
 
 } */
 
-.containerx{
-background: linear-gradient(to right, #C1DEE8 , #FBD9B9);
+.containerx {
+  background: linear-gradient(to right, #C1DEE8, #FBD9B9);
   height: auto;
 
 
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.main-1 {
+  /* main */
+}
+
+.z-2 {
+  z-index: 2;
 }

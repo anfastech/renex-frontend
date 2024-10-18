@@ -13,20 +13,28 @@ import RentalCollection from "./components/RentalCollection";
 import TopCities from "./components/TopCities";
 import NewsletterSubscription from "./components/NewsletterSubscription";
 import Header from "@/components/Header";
-import SearchBar from "./components/SearchBar";
-import ContSearch from "./components/ContSearch";
+import HomePageSelection from "./components/HomePageSelection";
+// import SearchBar from "./components/SearchBar";
+// import ContSearch from "./components/ContSearch";
 // import Header from "./components/Header";
 export default function HomePage() {
     return (
-        <main>
+        <main className="w-full">
             {/* Header Section */}
             <Header />
             {/* Hero Section */}
             <HeroSection />
+
+
             {/* SearchAndFilters */}
-            <SearchBar />
+            {/* <SearchBar /> */}
             {/* <SearchAndFilters /> */}
-            <ContSearch />
+            {/* <ContSearch /> */}
+
+            <div className="container mx-auto p-4">
+                <HomePageSelection label="Featured Location" redirectUrl="/SearchPage" />
+            </div>
+
             {/* RealEstateOptions */}
             <RealEstateOptions />
             {/* ThreeStepsSection */}
