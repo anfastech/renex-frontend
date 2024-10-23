@@ -14,6 +14,7 @@ import TopCities from "./components/TopCities";
 import NewsletterSubscription from "./components/NewsletterSubscription";
 import Header from "@/components/Header";
 import HomePageSelection from "./components/HomePageSelection";
+import FeacturedAds from "../Projects/components/FeacturedAds";
 // import SearchBar from "./components/SearchBar";
 // import ContSearch from "./components/ContSearch";
 // import Header from "./components/Header";
@@ -34,6 +35,7 @@ export default function HomePage() {
             <div className="container mx-auto p-4">
                 <HomePageSelection label="Featured Location" redirectUrl="/SearchPage" />
             </div>
+            <FeacturedAds />
 
             {/* RealEstateOptions */}
             <RealEstateOptions />
