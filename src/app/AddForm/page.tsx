@@ -62,7 +62,7 @@ export default function AddForm() {
     try {
       setIsSubmitting(true); // Start loading state
 
-      const response = await fetch("http://127.0.0.1:8000/insert_property", {
+      const response = await fetch("https://renex-backend.onrender.com/insert_property", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

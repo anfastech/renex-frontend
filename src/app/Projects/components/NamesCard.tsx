@@ -25,7 +25,7 @@ const NamesComponent: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    fetch('http://127.0.0.1:8000/properties') // Replace with your actual API endpoint
+    fetch('https://renex-backend.onrender.com/properties') // Replace with your actual API endpoint
       .then((response) => response.json())
       .then((data) => {
         console.log("Full API Response:", data); // Log full response
