@@ -38,6 +38,8 @@ const PropertyForm: React.FC = () => {
         });
     };
 
+    console.log(handleChange);
+
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         console.log("Submitting Property:", property); // Log the property data

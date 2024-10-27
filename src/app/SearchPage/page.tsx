@@ -4,10 +4,10 @@ import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
     faHome,
-    faSearch,
-    faPlus,
-    faStar,
-    faUser,
+    // faSearch,
+    // faPlus,
+    // faStar,
+    // faUser,
     faDoorOpen,
     faCar,
     faTree,
@@ -17,7 +17,7 @@ import {
     faSchool,
 } from "@fortawesome/free-solid-svg-icons";
 import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+// import Footer from "@/components/Footer";
 import Gap from "@/components/Gap";
 
 interface Property {

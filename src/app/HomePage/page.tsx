@@ -10,7 +10,7 @@ import NewlyLaunchedProjects from "./components/NewlyLaunchedProjects";
 import RentalCollection from "./components/RentalCollection";
 import TopCities from "./components/TopCities";
 import NewsletterSubscription from "./components/NewsletterSubscription";
-import Header from "@/components/Header";
+// import Header from "@/components/Header";
 import HomePageSelection from "./components/HomePageSelection";
 import FeacturedAds from "../Projects/components/FeacturedAds";
 import NamesComponent from "../Projects/components/NamesCard";
