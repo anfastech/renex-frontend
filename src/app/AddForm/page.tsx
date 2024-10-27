@@ -81,6 +81,7 @@ export default function AddForm() {
     } catch (error) {
       // Catch network or unexpected errors
       setErrorMessage("An error occurred. Please try again later.");
+      console.log(error);
     } finally {
       setIsSubmitting(false); // Reset loading state
     }
