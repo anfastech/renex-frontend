@@ -9,6 +9,7 @@ interface LocationData {
 }
 
 interface PropertyData {
+  _id: string;
   paid_ad: boolean;
   location: LocationData;
   transactionType: string;
@@ -61,9 +62,9 @@ const FeacturedAds: React.FC = () => {
       (item) => item.transactionType === activeTransactionType
     );
 
-    return filteredData.map((item) => (
+    return filteredData.map((item, index) => (
       <div
-        key={item.price}
+        key={item._id}
         className="relative bg-gray-300 flex-col rounded-lg justify-between border border-gray-400"
       >
         <div className="left-0 bg-black h-20 w-full flex items-center justify-center rounded-md">
@@ -93,6 +94,8 @@ const FeacturedAds: React.FC = () => {
             ))}
           </ul>
         </div>
+         {/* Example usage of index */}
+         <p className="text-gray-500 text-xs">Index: {index}</p> {/* Display index */}
       </div>
     ));
   };

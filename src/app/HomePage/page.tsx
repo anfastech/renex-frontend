@@ -1,7 +1,5 @@
 "use client"
 
-// import Header from "./components/Header";
-// import SearchAndFilters from "./components/SearchAndFilters";
 import HeroSection from "./components/HeroSection";
 import RealEstateOptions from "./components/RealEstateOptions";
 import ThreeStepsSection from "./components/ThreeStepsSection";
@@ -15,22 +13,14 @@ import NewsletterSubscription from "./components/NewsletterSubscription";
 import Header from "@/components/Header";
 import HomePageSelection from "./components/HomePageSelection";
 import FeacturedAds from "../Projects/components/FeacturedAds";
-// import SearchBar from "./components/SearchBar";
-// import ContSearch from "./components/ContSearch";
-// import Header from "./components/Header";
+import NamesComponent from "../Projects/components/NamesCard";
+
 export default function HomePage() {
     return (
         <main className="w-full">
-            {/* Header Section */}
-            <Header />
-            {/* Hero Section */}
+            {/* <Header /> */}
             <HeroSection />
-
-
-            {/* SearchAndFilters */}
-            {/* <SearchBar /> */}
-            {/* <SearchAndFilters /> */}
-            {/* <ContSearch /> */}
+            <NamesComponent />
 
             <div className="container mx-auto p-4">
                 <HomePageSelection label="Featured Location" redirectUrl="/SearchPage" />

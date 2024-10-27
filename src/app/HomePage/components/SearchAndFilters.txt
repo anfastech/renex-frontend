@@ -1,4 +1,4 @@
-import ContinueBrowsing from "./ContinueBrowsing";
+import ContinueBrowsing from "./ContinueBrowsing.txt";
 
 export default function SearchAndFilters() {
   return (

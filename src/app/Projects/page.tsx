@@ -1,115 +1,82 @@
-"use client"
-import React, { useEffect, useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-    faBars,
-    faHome,
-    faSearch,
-    faPlus,
-    faStar,
-    faUser,
-} from '@fortawesome/free-solid-svg-icons';
+"use client";
+import React, { useState, FormEvent } from 'react';
 
-interface PropertyData {
-    location: {
-        city: string;
+const DEFAULT_IMAGE = {
+    url: "project-2.png",
+    alt: "Default image"
+};
+
+const DEFAULT_LOCATION = {
+    city: "Sample City",
+    address: "789 Lake View"
+};
+
+const DEFAULT_PRICE = {
+    amount: 1000.00 // Example price
+};
+
+const DEFAULT_PROPERTY = {
+    paid_ad: true,
+    location: DEFAULT_LOCATION,
+    transactionType: "rent",
+    propertyType: "Building",
+    image: DEFAULT_IMAGE,
+    price: DEFAULT_PRICE,
+    features: ["Feature 1", "Feature 2"],
+    available: true
+};
+
+const PropertyForm: React.FC = () => {
+    const [property, setProperty] = useState(DEFAULT_PROPERTY);
+    const [message, setMessage] = useState('');
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = e.target;
+        setProperty({
+            ...property,
+            [name]: value
+        });
     };
-    transactionType: string;
-    propertyType: string;
-    price: number;
-    image: {
-        url: string;
-        alt: string;
-    };
-    features: string[];
-    paid_ad: boolean; // Property to check for paid ads
-}
 
-const RenexApp: React.FC = () => {
-    const [properties, setProperties] = useState<PropertyData[]>([]);
-    const [loading, setLoading] = useState<boolean>(true);
-    const [locationOptions, setLocationOptions] = useState<string[]>([]);
-    const [selectedLocation, setSelectedLocation] = useState<string>('');
+    const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        console.log("Submitting Property:", property); // Log the property data
 
-    useEffect(() => {
-        const loadProperties = async () => {
-            try {
-                const response = await fetch('http://127.0.0.1:8000/properties');
-                const data = await response.json();
-                console.log("Full API Response:", data); // Log full response
-
-                if (Array.isArray(data.properties)) {
-                    // Filter properties with paid_ad === true
-                    const paidAdProperties = data.properties.filter((property: PropertyData) => {
-                        console.log("Inspecting property:", property); // Log each property
-                        return property.paid_ad === true;
-                    });
-
-                    setProperties(paidAdProperties);
-                    console.log("Filtered properties with paid ads:", paidAdProperties); // Log filtered properties
-
-                    // Extract unique locations
-                    const uniqueLocations = Array.from(new Set(paidAdProperties.map(property => property.location.city)));
-                    setLocationOptions(uniqueLocations); // Set unique locations
-                } else {
-                    console.error("Invalid response format. Expected 'properties' to be an array.");
-                }
-            } catch (error) {
-                console.error('Error fetching data:', error);
-            } finally {
-                setLoading(false);
+        try {
+            const response = await fetch('http://127.0.0.1:8000/insert_property', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(property)
+            });
+            const result = await response.json();
+            if (response.ok) {
+                setMessage(`Property added successfully! ID: ${result.id}`);
+            } else {
+                setMessage(`Error: ${result.detail}`);
             }
-        };
+        } catch (error: unknown) {
+            // Type assertion to extract the error message
+            if (error instanceof Error) {
+                setMessage(`Network error: ${error.message}`);
+            } else {
+                setMessage(`Unknown error occurred`);
+            }
+        }
+    };
 
-        loadProperties();
-    }, []);
-
-    // Render loading state or property cards
     return (
-        <div className="p-4">
-            <h1 className="text-2xl font-bold mb-4">Properties</h1>
-            {loading ? (
-                <p>Loading properties...</p>
-            ) : (
-                <>
-                    <select 
-                        id="locationDropdown" 
-                        onChange={(e) => setSelectedLocation(e.target.value)} 
-                        className="mb-4"
-                    >
-                        <option value="" disabled selected>Select Location</option>
-                        {locationOptions.map(location => (
-                            <option key={location} value={location}>
-                                {location}
-                            </option>
-                        ))}
-                    </select>
-                    <div id="productGrid" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                        {properties.map(item => (
-                            <div key={item.image.url} className="relative bg-gray-300 flex-col rounded-lg justify-between border border-gray-400">
-                                <div className="left-0 bg-black h-20 w-full flex items-center justify-center rounded-md">
-                                    <img src={item.image.url} alt={item.image.alt} className="h-full w-full object-cover rounded-md" />
-                                </div>
-                                <div className="flex-1 p-3">
-                                    <h2 className="text-xl font-bold">{item.location.city}</h2>
-                                    <p className="text-lg">{item.propertyType}</p>
-                                    <p className="text-green-600 font-semibold">${item.price.toLocaleString()}</p>
-                                    <ul>
-                                        {item.features.map(feature => (
-                                            <li key={feature} className="flex items-center space-x-2">
-                                                <FontAwesomeIcon icon={faStar} />
-                                                <span>{feature}</span>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </>
-            )}
+        <div>
+            <h2>Add Property</h2>
+            <form onSubmit={handleSubmit}>
+                <button className='block text-center px-4 py-2 border border-transparent rounded-md bg-blue-600 text-white font-semibold text-lg ${
+                isSubmitting ? "opacity-50 cursor-not-allowed" : "hover:bg-blue-700"
+              } transition' type="submit">Add Property</button>
+            </form>
+            <p>{message}</p>
         </div>
     );
 };
 
-export default RenexApp;
+export default PropertyForm;

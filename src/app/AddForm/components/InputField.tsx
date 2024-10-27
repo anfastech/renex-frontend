@@ -1,19 +1,39 @@
+// InputField.tsx
 import React from "react";
 
 interface InputFieldProps {
   label: string;
   placeholder: string;
-  type?: "text" | "number" | "textarea";
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+  type?: "text" | "textarea"; // You can add more types if needed
 }
 
-const InputField: React.FC<InputFieldProps> = ({ label, placeholder, type = "text" }) => {
+const InputField: React.FC<InputFieldProps> = ({
+  label,
+  placeholder,
+  value,
+  onChange,
+  type = "text", // Default to 'text' input type
+}) => {
   return (
-    <div className="mb-6">
-      <h4 className="text-lg font-medium mb-2">{label}</h4>
+    <div className="mb-4">
+      <label className="block text-sm font-medium text-gray-700">{label}</label>
       {type === "textarea" ? (
-        <textarea className="px-4 py-2 border border-gray-300 rounded-md w-full" rows={5} placeholder={placeholder}></textarea>
+        <textarea
+          placeholder={placeholder}
+          value={value}
+          onChange={onChange}
+          className="mt-1 block w-full border border-gray-300 rounded-md p-2"
+        />
       ) : (
-        <input type={type} className="px-4 py-2 border border-gray-300 rounded-md w-full" placeholder={placeholder} />
+        <input
+          type={type}
+          placeholder={placeholder}
+          value={value}
+          onChange={onChange}
+          className="mt-1 block w-full border border-gray-300 rounded-md p-2"
+        />
       )}
     </div>
   );

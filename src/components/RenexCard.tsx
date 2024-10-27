@@ -13,6 +13,8 @@ const RenexCard: React.FC = () => {
                     <div className="flex-1 p-3">
                         <h2 className="text-xl font-bold">Links</h2>
                         <p className="text-gray-700">Owners</p>
+                        <p className="text-gray-700">Ramshad</p>
+                        <p className="text-gray-700">Ramiz</p>
                         <button className="text-gray-500 mt-3">Privacy Policies</button>
                         <div className="text-gray-500 mt-2 mb-8">
                             Copyright &copy; <span className="text-gray-700">renex.app</span> | Licence Received

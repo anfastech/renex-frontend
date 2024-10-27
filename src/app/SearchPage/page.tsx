@@ -17,8 +17,11 @@ import {
     faSchool,
 } from "@fortawesome/free-solid-svg-icons";
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import Gap from "@/components/Gap";
 
 interface Property {
+    _id: string;
     location: { city: string };
     transactionType: string;
     propertyType: string;
@@ -92,7 +95,7 @@ const SearchPage = () => {
 
         return filteredData.map((item) => (
             <div
-                key={item.price}
+                key={item._id}
                 className="relative bg-gray-300 flex-col rounded-lg justify-between border border-gray-400"
             >
                 <div className="left-0 bg-black h-20 w-full flex items-center justify-center rounded-md">
@@ -209,7 +212,9 @@ const SearchPage = () => {
                 )}
             </main>
 
-            <footer className="fixed bottom-0 left-0 right-0 bg-gray-200 p-4 shadow-lg">
+            {/* <Footer /> */}
+
+            {/* <footer className="fixed bottom-0 left-0 right-0 bg-gray-200 p-4 shadow-lg">
                 <div className="flex justify-between items-center">
                     <a href="/">
                         <button aria-label="Home">
@@ -234,7 +239,8 @@ const SearchPage = () => {
                         <FontAwesomeIcon icon={faUser} className="text-2xl" />
                     </button>
                 </div>
-            </footer>
+            </footer> */}
+            <Gap />
         </div>
     );
 };

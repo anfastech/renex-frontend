@@ -19,23 +19,25 @@ const GlobalRealEstateBrokerageSection = () => {
               Post your residential / commercial property
             </p>
             <div className="mt-[8%]">
+              <a href='/AddForm'>
               <button type="submit" className="py-[14px] px-[30px] bg-[#1F1F1F] rounded-[40px] text-white mr-[18px]">
-                Get a Quote
+              Add Your Property Now
               </button>
-              <button type="submit" className="py-[14px] px-[30px] bg-gray-400 rounded-[40px] text-black border-inherit">
+              </a>
+              {/* <button type="submit" className="py-[14px] px-[30px] bg-gray-400 rounded-[40px] text-black border-inherit">
                 Get a Quote
-              </button>
+              </button> */}
               <ul className="flex mt-[40px] mb-[40px] lg:mb-0">
                 <li className="mr-[10%]">
                   <h3 id="customers" className="font-black text-[34px]">200+</h3>
                   <h4 className="text-[14px]">Property Listings</h4>
                 </li>
                 <li className="mr-[10%]">
-                  <h3 id="offices" className="font-black text-[34px]">1000+</h3>
+                  <h3 id="offices" className="font-black text-[34px]">100+</h3>
                   <h4 className="text-[14px]">Monthly Searches</h4>
                 </li>
                 <li className="mr-[10%]">
-                  <h3 id="students" className="font-black text-[34px]">999+</h3>
+                  <h3 id="students" className="font-black text-[34px]">99+</h3>
                   <h4 className="text-[14px]">Owners advertise <br /> monthly</h4>
                 </li>
               </ul>

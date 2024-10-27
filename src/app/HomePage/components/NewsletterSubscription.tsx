@@ -12,14 +12,12 @@ const NewsletterSubscription: React.FC = () => {
                         Subscribe Our Newsletter
                     </h1>
                     <p className="text-xs lg:text-base mb-8 text-gray-700">
-                        Ipsum dolor sit amet consectetur. Feugiat ut aliquet sit pellentesque
-                        sollicitudin. Egestas faucibus lacus diam in senectus consectetur.
-                        Mattis elit adipiscing quisque tellus scelerisque vehicula ante nunc.
+                    Subscribe to the Renex Newsletter and stay updated with the latest insights, innovations, and the growth of our community dedicated to societal benefit
                     </p>
-                    <form action="" className="mb-10">
+                    <form action="" className="mb-10 disabled">
                         <div className="flex-1 lg:justify-between relative w-full">
                             <input type="text" placeholder="Enter Your Email" className="outline-none w-full lg:w-[90%] h-[50px] p text-black rounded-[40px] py-[18px] pl-[24px] relative" />
-                                <button type="submit" className="py-[14px] px-[30px] bg-[#1F1F1F] rounded-[40px] absolute right-0 lg:right-[0px] text-white">Get a Quote</button>
+                                <button type="submit" className="py-[14px] px-[30px] bg-[#1F1F1F] rounded-[40px] absolute right-0 lg:right-[0px] text-white">Subscribe</button>
                         </div>
                     </form>
                 </div>
