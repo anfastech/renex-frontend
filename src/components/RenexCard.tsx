@@ -20,6 +20,7 @@ const RenexCard: React.FC = () => {
                             Copyright &copy; <span className="text-gray-700">renex.app</span> | Licence Received
                         </div>
                         <div className="h-16"></div>
+                        <div className="h-5 lg:h-20"></div>
                     </div>
                 </div>
             </section>

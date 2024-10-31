@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "../styles/globals.css";
-import Head from 'next/head';
+import Head from "next/head";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 // import Header from "../components/Header";
@@ -42,11 +42,17 @@ export default function RootLayout({
           defer // Ensures the script runs after the HTML is parsed
         ></script>
       </Head>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-100 flex flex-col items-center w-full`}>
-        <Header />
-        {/* <Header /> */}
-        {children}
-        <Footer />
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-100 flex flex-col lg:flex-row justify-around w-full`}
+      >
+        <div className="bg-gray-300 rounded-lg border border-gray-400 m-2 lg:h-48 lg:w-1/5 lg:mt-72 invisible lg:visible h-0 w-0 lg:sticky lg:top-48"></div>
+          <Header />
+        <div className="w-full lg:w-1/2">
+          {/* <Header /> */}
+          {children}
+        </div>
+          <Footer />
+        <div className="bg-gray-300 rounded-lg border border-gray-400 m-2 lg:h-48 lg:w-1/5 lg:mt-56 invisible lg:visible h-0 w-0 lg:sticky lg:top-48"></div>
       </body>
     </html>
   );

@@ -143,7 +143,7 @@ const SearchPage = () => {
   };
 
   return (
-    <div className="bg-gray-100">
+    <div className="">
       <Header />
       <div className="h-24" /> {/* Spacer for header */}
       <div className="container mx-auto p-4 md:p-6 w-full cursor-pointer">

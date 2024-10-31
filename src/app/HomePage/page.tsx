@@ -17,7 +17,7 @@ import FeacturedAds from "../Projects/components/FeacturedAds";
 
 export default function HomePage() {
   return (
-    <main className="w-full lg:w-1/2">
+    <main className="">
       {/* <Header /> */}
       <div className="w-full flex justify-center">
       <div className="w-4/5">
