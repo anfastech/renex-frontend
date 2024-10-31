@@ -1,4 +1,4 @@
-import Footer from "@/components/Footer";
+// import Footer from "@/components/Footer";
 import HomePage from "./HomePage/page";
 // import NamesComponent from "./Projects/components/NamesCard";
 import RenexCard from "@/components/RenexCard";
@@ -10,7 +10,7 @@ export default function Home() {
       {/* <NamesComponent /> */}
       <HomePage />
       <RenexCard />
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }
