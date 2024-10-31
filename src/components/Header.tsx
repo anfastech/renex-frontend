@@ -28,7 +28,7 @@ export default function Header({ onMenuToggle }: HeaderProps) {
 
     return (
         <>
-            <header className="fixed top-2 left-2 right-2 bg-gray-200 p-4 border border-gray-400 flex justify-between items-center rounded-md z-10">
+            <header className="fixed top-2 left-2 right-2 bg-gray-200 p-4 border border-gray-400 flex justify-between items-center rounded-md z-10 lg:w-1/2 lg:left-1/2 lg:transform lg:-translate-x-1/2 lg:top-4">
                 {/* Hamburger Icon */}
                 <button className="text-xl" onClick={handleMenuToggle}>
                     <FontAwesomeIcon icon={faBars} style={{ color: "black" }} />
@@ -41,8 +41,8 @@ export default function Header({ onMenuToggle }: HeaderProps) {
 
             {/* Modal for Mobile Menu */}
             {isMenuOpen && (
-                <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-20">
-                    <div className="bg-white rounded-lg shadow-lg p-6 w-80">
+                <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-20 ">
+                    <div className="bg-white rounded-lg shadow-lg p-6 w-80 lg:w-[40%]">
                         <h2 className="text-lg font-bold mb-4">Menu</h2>
                         <nav className="flex flex-col space-y-4">
                             <Link href="/" onClick={closeMenu}>
@@ -71,23 +71,6 @@ export default function Header({ onMenuToggle }: HeaderProps) {
         </>
     );
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

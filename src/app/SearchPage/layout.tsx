@@ -7,7 +7,7 @@ interface LayoutProps {
 
 const SearchPageLayout = ({ children }: LayoutProps) => {
     return (
-        <div className="min-h-screen flex flex-col">
+        <div className="min-h-screen flex flex-col w-full lg:w-1/2">
             {children}
         </div>
     );

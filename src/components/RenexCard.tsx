@@ -5,9 +5,9 @@ const RenexCard: React.FC = () => {
         <>
             {/* Gap */}
             <div className="h-8"></div>
-            <div className="h-16"></div>
+            <div className="h-16 lg:h-4"></div>
 
-            <section>
+            <section className='w-4/4 lg:w-1/2'>
                 {/* Product Card 1 */}
                 <div className="relative bg-gray-300 h-56 flex-col rounded-lg justify-between border border-gray-400 m-2">
                     <div className="flex-1 p-3">

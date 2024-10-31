@@ -16,8 +16,8 @@ const NewsletterSubscription: React.FC = () => {
                     </p>
                     <form action="" className="mb-10 disabled">
                         <div className="flex-1 lg:justify-between relative w-full">
-                            <input type="text" placeholder="Enter Your Email" className="outline-none w-full lg:w-[90%] h-[50px] p text-black rounded-[40px] py-[18px] pl-[24px] relative" />
-                                <button type="submit" className="py-[14px] px-[30px] bg-[#1F1F1F] rounded-[40px] absolute right-0 lg:right-[0px] text-white">Subscribe</button>
+                            <input type="text" placeholder="Enter Your Email" className="outline-none w-full lg:w-[200px] h-[50px] p text-black rounded-[40px] py-[18px] pl-[24px] relative" />
+                                <button type="submit" className="py-[14px] px-[30px] bg-[#1F1F1F] rounded-[40px] absolute right-0 lg:-right-[95px] text-white">Subscribe</button>
                         </div>
                     </form>
                 </div>

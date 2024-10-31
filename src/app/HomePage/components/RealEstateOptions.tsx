@@ -66,35 +66,7 @@ export default function RealEstateOptions() {
             </div>
           </div>
         </div>
-
-        {/* Card 5: Plots/Land */}
-        {/* <div className="min-w-[150px] sm:min-w-[200px] lg:min-w-[250px]">
-          <div className="bg-white rounded-lg shadow-md">
-            <img 
-              src="/images/plot.land.webp" 
-              alt="Plots/Land" 
-              className="w-full h-40 object-cover rounded-t-lg" 
-            />
-            <div className="p-4">
-              <p className="text-center text-blue-900 font-semibold">Plots/Land</p>
-            </div>
-          </div>
-        </div> */}
-
-        {/* Card 6: Explore Insights */}
-        {/* <div className="min-w-[150px] sm:min-w-[200px] lg:min-w-[250px]">
-          <div className="bg-white rounded-lg shadow-md relative">
-            <img 
-              src="/images/commercial.webp" 
-              alt="Explore Insights" 
-              className="w-full h-40 object-cover rounded-t-lg" 
-            />
-            <div className="p-4">
-              <p className="text-center text-blue-900 font-semibold">Buying Commercial spaces</p>
-            </div>
-            <span className="absolute top-2 left-2 bg-red-500 text-white text-xs px-2 py-1 rounded-full">NEW</span>
-          </div>
-        </div> */}
+        
       </div>
     </div>
   );

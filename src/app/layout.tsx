@@ -42,7 +42,7 @@ export default function RootLayout({
           defer // Ensures the script runs after the HTML is parsed
         ></script>
       </Head>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-100`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-100 flex flex-col items-center w-full`}>
         <Header />
         {/* <Header /> */}
         {children}
