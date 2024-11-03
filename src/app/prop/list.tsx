@@ -29,7 +29,7 @@ const PropertyList: React.FC = () => {
   const [activeTransactionType, setActiveTransactionType] = useState<string>("rent");
 
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/properties") // Replace with your actual API endpoint
+    fetch(`${process.env.NEXT_PUBLIC_BACKEND_HEAD}/properties`) // Replace with your actual API endpoint
       .then((response) => response.json())
       .then((data) => {
         if (Array.isArray(data.properties)) {
