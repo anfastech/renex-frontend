@@ -7,7 +7,8 @@ import Footer from "@/components/Footer";
 import Gap from "@/components/Gap";
 import InputField from "./components/InputField";
 import Modal from "./components/Modal"; // Import the modal component
-import { ADDRESS_DATA, Country, State, District, Town } from "./userData";
+// import { ADDRESS_DATA, Country, State, District, Town } from "./userData";
+import { ADDRESS_DATA, State } from "./userData";
 
 const DEFAULT_USER_DATA = {
   name: "",
@@ -25,7 +26,7 @@ export default function ProfilePage() {
   const [newData, setNewData] = useState(DEFAULT_USER_DATA);
   const [isModalVisible, setModalVisible] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
+  // const [error, setError] = useState("");
   const [step, setStep] = useState(1); // Track the current step
 
   useEffect(() => {

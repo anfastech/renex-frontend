@@ -3,7 +3,8 @@ import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import { MongoDBAdapter } from "@next-auth/mongodb-adapter";
 import clientPromise from "../../../../../lib/mongodb";
-import type { DefaultSession, User, Account, Profile } from "next-auth";
+// import type { DefaultSession, User, Account, Profile } from "next-auth";
+import type { DefaultSession, User } from "next-auth";
 
 // Extend the default User and Session types
 declare module "next-auth" {

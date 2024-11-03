@@ -26,7 +26,8 @@ interface PropertyData {
 const PropertyList: React.FC = () => {
   const [properties, setProperties] = useState<PropertyData[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
-  const [activeTransactionType, setActiveTransactionType] = useState<string>("rent");
+  // const [activeTransactionType, setActiveTransactionType] = useState<string>("rent");
+  const [activeTransactionType] = useState<string>("rent");
 
   useEffect(() => {
     fetch(`${process.env.NEXT_PUBLIC_BACKEND_HEAD}/properties`) // Replace with your actual API endpoint

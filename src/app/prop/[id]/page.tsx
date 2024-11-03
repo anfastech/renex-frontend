@@ -29,7 +29,6 @@ const PropertyPage = () => {
   const { id } = useParams(); // Use useParams to get the id from the URL
   const [property, setProperty] = useState<Property | null>(null);
   const { data: session, status } = useSession(); // Get session data and status
-  const router = useRouter();
 
   useEffect(() => {
     if (status === "loading") return; // Wait for the session to load
@@ -93,43 +92,44 @@ const PropertyPage = () => {
 
   return (
     <div className="container mx-auto p-6">
-    <Gap />
-    <Gap />
-    <h1 className="text-3xl font-bold mb-4">
-      {property.propertyType} for {property.transactionType}
-    </h1>
-    <p className="text-gray-600">
-      {property.location.city}, {property.location.address}
-    </p>
+      <Gap />
+      <Gap />
+      <h1 className="text-3xl font-bold mb-4">
+        {property.propertyType} for {property.transactionType}
+      </h1>
+      <p className="text-gray-600">
+        {property.location.city}, {property.location.address}
+      </p>
 
-    <div className="flex flex-col md:flex-row justify-center items-center mt-4 mb-4">
-      {property.images.map((img: Image, index: number) => (
-        <img
-          key={index} // Use a unique key
-          src={`/images/${img.url}`} // Assuming img has a url property
-          alt={img.alt} // Assuming img has an alt property
-          className="w-full md:w-1/2 h-64 object-cover p-2"
-        />
-      ))}
+      <div className="flex flex-col md:flex-row justify-center items-center mt-4 mb-4">
+        {property.images?.map((img: Image, index: number) => (
+          <img
+            key={index} // Use a unique key
+            src={`/images/${img.url}`} // Assuming img has a url property
+            alt={img.alt} // Assuming img has an alt property
+            className="w-full md:w-1/2 h-64 object-cover p-2"
+          />
+        ))}
+      </div>
+
+      <p className="text-lg mb-2">Price: ${property.price}</p>
+      <p className="text-md mb-2">Features:</p>
+      <ul className="list-disc list-inside">
+        {property.features.map((feature: string, index: number) => (
+          <li key={index}>{feature}</li>
+        ))}
+      </ul>
+      <button className="text-md mt-4 bg-blue-500 text-white py-2 px-4 rounded border border-gray-400">
+        Contact: {property.available ? "963358582" : "785515111"}
+      </button>
+      <p className="text-md mt-4">
+        Availability: {property.available ? "Available" : "Not Available"}
+      </p>
+      <Gap />
+      <Gap />
     </div>
-
-    <p className="text-lg mb-2">Price: ${property.price}</p>
-    <p className="text-md mb-2">Features:</p>
-    <ul className="list-disc list-inside">
-      {property.features.map((feature: string, index: number) => (
-        <li key={index}>{feature}</li>
-      ))}
-    </ul>
-    <button className="text-md mt-4 bg-blue-500 text-white py-2 px-4 rounded border border-gray-400">
-      Contact: {property.available ? "963358582" : "785515111"}
-    </button>
-    <p className="text-md mt-4">
-      Availability: {property.available ? "Available" : "Not Available"}
-    </p>
-    <Gap />
-    <Gap />
-  </div>
   );
 };
 
 export default PropertyPage;
+

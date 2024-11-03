@@ -2,7 +2,7 @@
 
 import { MongoClient } from "mongodb";
 
-declare module NodeJS {
+declare namespace NodeJS {
   interface Global {
     _mongoClientPromise: Promise<MongoClient>;
   }

@@ -1,5 +1,4 @@
 // types/next-auth.d.ts
-import NextAuth from "next-auth";
 
 declare module "next-auth" {
   interface User {
@@ -18,7 +17,7 @@ declare module "next-auth" {
     user: {
       id: string; // Ensure the session has the user ID
       name?: string | null;
-      email?: string | null;
+      email?: string | null; 
       image?: string | null; // This will store the user's profile picture
     };
   }
