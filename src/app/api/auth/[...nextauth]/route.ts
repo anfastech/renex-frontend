@@ -1,9 +1,8 @@
 // app/api/auth/[...nextauth]/route.ts
-import NextAuth from "next-auth";
+import NextAuth, { NextAuthOptions } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import { MongoDBAdapter } from "@next-auth/mongodb-adapter";
 import clientPromise from "../../../../../lib/mongodb";
-// import type { DefaultSession, User, Account, Profile } from "next-auth";
 import type { DefaultSession, User } from "next-auth";
 
 // Extend the default User and Session types
@@ -22,7 +21,7 @@ declare module "next-auth" {
   }
 }
 
-export const authOptions = {
+const authOptions: NextAuthOptions = {
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID!,
@@ -41,5 +40,8 @@ export const authOptions = {
   },
 };
 
+// Set up the NextAuth handler using authOptions
 const handler = NextAuth(authOptions);
+
+// Export GET and POST handlers for the Next.js route
 export { handler as GET, handler as POST };
