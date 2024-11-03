@@ -1,0 +1,351 @@
+"use client";
+import React, { useState, useEffect } from "react";
+import { useSession } from "next-auth/react";
+import { redirect } from "next/navigation";
+import Footer from "@/components/Footer";
+import Gap from "@/components/Gap";
+import InputField from "./components/InputField";
+import { ADDRESS_DATA } from "./userData";
+
+const DEFAULT_USER_DATA = {
+  name: "",
+  email: "",
+  phone: "",
+  address: {
+    country: "",
+    state: "",
+    district: "",
+    mainTown: "",
+  },
+};
+
+export default function ProfilePage() {
+  const { data: session, status } = useSession();
+
+  // Redirect to sign-in page if user is not authenticated
+  if (status === "unauthenticated") {
+    redirect("/auth/signin");
+  }
+
+  const [userData, setUserData] = useState(DEFAULT_USER_DATA);
+  const [newData, setNewData] = useState(userData);
+  const [isModalVisible, setModalVisible] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const [greetingName, setGreetingName] = useState("");
+
+  // Sync user data if session changes and store in local storage
+  useEffect(() => {
+    if (session) {
+      const initialUserData = {
+        name: session.user?.name || DEFAULT_USER_DATA.name,
+        email: session.user?.email || DEFAULT_USER_DATA.email,
+        phone: "",
+        address: {
+          country: "",
+          state: "",
+          district: "",
+          mainTown: "",
+        },
+      };
+
+      setUserData(initialUserData);
+      setNewData(initialUserData);
+      localStorage.setItem("userData", JSON.stringify(initialUserData));
+      setGreetingName(initialUserData.name);
+    }
+  }, [session]);
+
+  // Update local storage when newData changes
+  useEffect(() => {
+    localStorage.setItem("userData", JSON.stringify(newData));
+  }, [newData]);
+
+  const handleUpdateProfile = async (e) => {
+    e.preventDefault();
+
+    // Simple validation
+    if (!newData.name || !newData.email || !newData.phone) {
+      alert("Please fill out all required fields.");
+      return;
+    }
+
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(newData.email)) {
+      alert("Please enter a valid email address.");
+      return;
+    }
+
+    setLoading(true);
+    setError("");
+
+    try {
+      const response = await fetch("/api/updateProfile", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newData),
+      });
+
+      if (!response.ok) {
+        const errorResponse = await response.json();
+        throw new Error(errorResponse.message || "Failed to update profile.");
+      }
+
+      // Update user data in state and local storage
+      setUserData(newData);
+      localStorage.setItem("userData", JSON.stringify(newData));
+
+      alert("Profile updated successfully!");
+      setModalVisible(false); // Close modal after success
+    } catch (error) {
+      setError(error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Fetch user name from local storage for greeting
+  useEffect(() => {
+    const storedUserData = localStorage.getItem("userData");
+    if (storedUserData) {
+      const userData = JSON.parse(storedUserData);
+      setGreetingName(userData.name);
+    }
+  }, []);
+
+  if (status === "loading") {
+    return <p>Loading...</p>;
+  }
+
+  const renderField = (label, value) => (
+    <p>
+      <strong>{label}:</strong>{" "}
+      <span className={value ? "text-black" : "text-gray-400"}>
+        {value || "Incomplete"}
+      </span>
+    </p>
+  );
+
+  return (
+    <section className="pt-8">
+      <Gap />
+      <div className="wrapper mx-auto max-w-7xl px-4">
+        <h1 className="text-3xl font-semibold text-center mb-6">
+          Welcome, {greetingName || "User"}!
+        </h1>
+
+        {error && <p className="text-red-500">{error}</p>}
+
+        <div className="bg-white p-6 rounded-lg shadow-md border border-gray-300 mb-6">
+          <h2 className="text-xl font-semibold">Profile Details</h2>
+          {renderField("Name", userData.name)}
+          {renderField("Email", userData.email)}
+          {renderField("Phone", userData.phone)}
+          <p>
+            <strong>Address:</strong>{" "}
+            <span
+              className={
+                userData.address.mainTown &&
+                userData.address.district &&
+                userData.address.state &&
+                userData.address.country
+                  ? "text-black"
+                  : "text-gray-400"
+              }
+            >
+              {userData.address.mainTown &&
+              userData.address.district &&
+              userData.address.state &&
+              userData.address.country
+                ? `${userData.address.mainTown}, ${userData.address.district}, ${userData.address.state}, ${userData.address.country}`
+                : "Incomplete"}
+            </span>
+          </p>
+        </div>
+
+        <div className="mb-6 text-center">
+          <button
+            onClick={() => {
+              setNewData(userData);
+              setModalVisible(true);
+            }}
+            className="px-4 py-2 border border-transparent rounded-md bg-blue-600 text-white font-semibold text-lg hover:bg-blue-700 transition"
+          >
+            Edit Profile
+          </button>
+        </div>
+
+        {isModalVisible && (
+          <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center">
+            <div className="bg-white p-8 rounded-lg shadow-lg">
+              <h2 className="text-xl font-semibold mb-4">Edit Profile</h2>
+              <form onSubmit={handleUpdateProfile}>
+                <InputField
+                  label="Name"
+                  placeholder="Enter your name"
+                  value={newData.name}
+                  onChange={(e) =>
+                    setNewData({ ...newData, name: e.target.value })
+                  }
+                />
+                <InputField
+                  label="Email"
+                  placeholder="Enter your email"
+                  value={newData.email}
+                  onChange={(e) =>
+                    setNewData({ ...newData, email: e.target.value })
+                  }
+                />
+                <InputField
+                  label="Phone"
+                  placeholder="Enter your phone number"
+                  value={newData.phone}
+                  onChange={(e) =>
+                    setNewData({ ...newData, phone: e.target.value })
+                  }
+                />
+
+                <label htmlFor="country">Country</label>
+                <select
+                  id="country"
+                  value={newData.address.country}
+                  onChange={(e) => {
+                    const selectedCountry = e.target.value;
+                    setNewData({
+                      ...newData,
+                      address: {
+                        country: selectedCountry,
+                        state: "", // Reset state when country changes
+                        district: "", // Reset district when country changes
+                        mainTown: "", // Reset town when country changes
+                      },
+                    });
+                  }}
+                  className="w-full p-2 border mb-2"
+                >
+                  <option value="">Select a country</option>
+                  {ADDRESS_DATA.countries.map((country) => (
+                    <option key={country} value={country}>
+                      {country}
+                    </option>
+                  ))}
+                </select>
+
+                {/* Step 2 */}
+
+                {/* State Select */}
+                <label htmlFor="state">State</label>
+                <select
+                  id="state"
+                  value={newData.address.state}
+                  onChange={(e) => {
+                    const selectedState = e.target.value;
+                    setNewData({
+                      ...newData,
+                      address: {
+                        ...newData.address,
+                        state: selectedState,
+                        district: "", // Reset district when state changes
+                        mainTown: "", // Reset town when state changes
+                      },
+                    });
+                  }}
+                  className="w-full p-2 border mb-2"
+                >
+                  <option value="">Select a state</option>
+                  {ADDRESS_DATA.states[newData.address.country]?.map(
+                    (state) => (
+                      <option key={state} value={state}>
+                        {state}
+                      </option>
+                    )
+                  )}
+                </select>
+
+                {/* District Select */}
+                <label htmlFor="district">District</label>
+                <select
+                  id="district"
+                  value={newData.address.district}
+                  onChange={(e) => {
+                    const selectedDistrict = e.target.value;
+                    setNewData({
+                      ...newData,
+                      address: {
+                        ...newData.address,
+                        district: selectedDistrict,
+                        mainTown: "", // Reset town when district changes
+                      },
+                    });
+                  }}
+                  className="w-full p-2 border mb-2"
+                >
+                  <option value="">Select a district</option>
+                  {ADDRESS_DATA.districts[newData.address.state]?.map(
+                    (district) => (
+                      <option key={district} value={district}>
+                        {district}
+                      </option>
+                    )
+                  )}
+                </select>
+
+                {/* Town Select */}
+                <label htmlFor="town">Town</label>
+                <select
+                  id="town"
+                  value={newData.address.mainTown}
+                  onChange={(e) => {
+                    const selectedTown = e.target.value;
+                    setNewData({
+                      ...newData,
+                      address: {
+                        ...newData.address,
+                        mainTown: selectedTown,
+                      },
+                    });
+                  }}
+                  className="w-full p-2 border mb-2"
+                >
+                  <option value="">Select a town</option>
+                  {ADDRESS_DATA.mainTowns[newData.address.district]?.map(
+                    (town) => (
+                      <option key={town} value={town}>
+                        {town}
+                      </option>
+                    )
+                  )}
+                </select>
+
+                <div className="flex justify-between mt-4">
+                  <button
+                    type="button"
+                    onClick={() => setModalVisible(false)}
+                    className="px-4 py-2 border rounded-md text-gray-600 hover:bg-gray-200"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="submit"
+                    disabled={loading}
+                    className={`px-4 py-2 border rounded-md ${
+                      loading
+                        ? "bg-gray-400"
+                        : "bg-blue-600 text-white hover:bg-blue-700"
+                    }`}
+                  >
+                    {loading ? "Updating..." : "Update Profile"}
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        )}
+      </div>
+      <Footer />
+    </section>
+  );
+}

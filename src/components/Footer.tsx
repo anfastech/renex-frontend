@@ -69,7 +69,7 @@ export default function Footer() {
             </button>
           </a>
 
-          <a href="/" className="flex-col flex justify-center">
+          <a href="/Recent" className="flex-col flex justify-center">
             {/* Star Icon */}
             <button className="focus:outline-none hover:text-blue-600">
               <FontAwesomeIcon icon={faStar} fixedWidth className="w-5 h-5" />
@@ -77,7 +77,7 @@ export default function Footer() {
             <h1 className="invisiblex md:visible lg:visible">Recent</h1>
           </a>
 
-          <a href="/" className="flex-col flex justify-center">
+          <a href="/ProfilePage" className="flex-col flex justify-center">
             {/* User Icon */}
             <button className="focus:outline-none hover:text-blue-600">
               <FontAwesomeIcon icon={faUser} fixedWidth className="w-5 h-5" />

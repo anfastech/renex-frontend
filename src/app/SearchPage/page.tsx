@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHome,
@@ -44,9 +45,7 @@ const SearchPage = () => {
 
   const fetchData = async () => {
     try {
-      const response = await fetch(
-        "https://renex-backend.onrender.com/properties"
-      ); // Updated API endpoint
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_HEAD}/properties/properties`); // Updated API endpoint
       if (!response.ok) throw new Error("Network response was not ok");
 
       //   const jsonData: Property[] = await response.json(); // changing this
@@ -95,33 +94,35 @@ const SearchPage = () => {
         key={item._id}
         className="relative bg-gray-300 flex-col rounded-lg justify-between border border-gray-400 cursor-pointer"
       >
-        <div className="left-0 bg-black h-20 w-full flex items-center justify-center rounded-md">
-          <img
-            src={"/images/" + item.image.url}
-            alt={item.image.alt}
-            className="h-full w-full object-cover rounded-md"
-          />
-        </div>
-        <div className="flex-1 p-3">
-          <h2 className="text-xl font-bold">{item.location.city}</h2>
-          <p className="text-gray-700 text-xs">
-            For{" "}
-            {item.transactionType.charAt(0).toUpperCase() +
-              item.transactionType.slice(1)}{" "}
-            • {item.propertyType}
-          </p>
-          <p className="font-bold mt-2 text-green-600">
-            Price: ₹{item.price.toLocaleString()}
-          </p>
-          <ul className="mt-2 space-y-1 text-gray-600 text-xs">
-            {item.features.map((feature) => (
-              <li className="flex items-center space-x-2" key={feature}>
-                <FontAwesomeIcon icon={getFeatureIcon(feature)} />
-                <span>{feature}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
+        <Link href={`/prop/${item._id}`} passHref>
+          <div className="left-0 bg-black h-20 w-full flex items-center justify-center rounded-md">
+            <img
+              src={"/images/" + item.image.url}
+              alt={item.image.alt}
+              className="h-full w-full object-cover rounded-md"
+            />
+          </div>
+          <div className="flex-1 p-3">
+            <h2 className="text-xl font-bold">{item.location.city}</h2>
+            <p className="text-gray-700 text-xs">
+              For{" "}
+              {item.transactionType.charAt(0).toUpperCase() +
+                item.transactionType.slice(1)}{" "}
+              • {item.propertyType}
+            </p>
+            <p className="font-bold mt-2 text-green-600">
+              Price: ₹{item.price.toLocaleString()}
+            </p>
+            <ul className="mt-2 space-y-1 text-gray-600 text-xs">
+              {item.features.map((feature) => (
+                <li className="flex items-center space-x-2" key={feature}>
+                  <FontAwesomeIcon icon={getFeatureIcon(feature)} />
+                  <span>{feature}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </Link>
       </div>
     ));
   };

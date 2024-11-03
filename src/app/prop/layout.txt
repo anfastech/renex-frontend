@@ -1,0 +1,19 @@
+// app/layout.tsx
+
+import React, { ReactNode } from 'react';
+
+interface RootLayoutProps {
+  children: ReactNode;
+}
+
+const RootLayout = ({ children }: RootLayoutProps) => {
+  return (
+    <html>
+      <body>
+        <div className="layout-container">{children}</div>
+      </body>
+    </html>
+  );
+};
+
+export default RootLayout;

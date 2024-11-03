@@ -11,6 +11,7 @@ import {
   faHome as faHomeIcon,
   faSchool,
 } from "@fortawesome/free-solid-svg-icons";
+import Gap from "@/components/Gap";
 
 interface LocationData {
   city: string;
@@ -32,51 +33,42 @@ interface PropertyData {
   available: boolean;
 }
 
-const FeacturedAds: React.FC = () => {
+const RecentViews: React.FC = () => {
   const [properties, setProperties] = useState<PropertyData[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
-  const [activeTransactionType, setActiveTransactionType] =
-    useState<string>("rent");
 
   useEffect(() => {
-    fetch(`${process.env.NEXT_PUBLIC_BACKEND_HEAD}/properties/properties`) // Replace with your actual API endpoint
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Full API Response:", data); // Log full response
+    const recentViews = JSON.parse(localStorage.getItem("recentViews") || "[]");
+    if (recentViews.length > 0) {
+      // Fetch properties based on the recent views
+      const fetchProperties = async () => {
+        const propertyPromises = recentViews.map((id: string) =>
+          fetch(
+            `${process.env.NEXT_PUBLIC_BACKEND_HEAD}/properties/properties/${id}`
+          ).then((response) => response.json())
+        );
 
-        if (Array.isArray(data.properties)) {
-          // Filter properties with paid_ad === true
-          const paidAdProperties = data.properties.filter(
-            (property: PropertyData) => {
-              console.log("Inspecting property:", property); // Log each property
-              return property.paid_ad === true;
-            }
-          );
-
-          setProperties(paidAdProperties);
-          console.log("Filtered properties with paid ads:", paidAdProperties); // Log filtered properties
-        } else {
-          console.error(
-            "Invalid response format. Expected 'properties' to be an array."
-          );
+        try {
+          const propertiesData = await Promise.all(propertyPromises);
+          setProperties(propertiesData);
+          console.log("Fetched Recent Properties:", propertiesData);
+        } catch (error) {
+          console.error("Error fetching properties:", error);
+        } finally {
+          setLoading(false);
         }
+      };
 
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-        setLoading(false);
-      });
+      fetchProperties();
+    } else {
+      setLoading(false); // No recent views found
+    }
   }, []);
 
   const loadProperties = () => {
-    if (loading) return [];
+    if (loading) return <p>Loading...</p>;
 
-    const filteredData = properties.filter(
-      (item) => item.transactionType === activeTransactionType
-    );
-
-    return filteredData.map((item, index) => (
+    return properties.map((item) => (
       <div
         key={item._id}
         className="relative bg-gray-300 flex-col rounded-lg justify-between border border-gray-400 cursor-pointer"
@@ -109,9 +101,6 @@ const FeacturedAds: React.FC = () => {
               ))}
             </ul>
           </div>
-          {/* Example usage of index */}
-          <p className="text-gray-500 text-xs">Index: {index}</p>{" "}
-          {/* Display index */}
         </Link>
       </div>
     ));
@@ -128,47 +117,20 @@ const FeacturedAds: React.FC = () => {
     return faHome; // Default icon
   };
 
-  const handleTransactionChange = (type: string) => {
-    setActiveTransactionType(type);
-  };
-
   return (
     <main className="px-4 py-2 md:px-6 lg:px-10">
-      {/* Rent, Buy, Sell Buttons */}
-      <div className="flex flex-col sm:flex-row sm:justify-between gap-2 mb-4">
-        {["rent", "buy", "sell"].map((type) => (
-          <button
-            key={type}
-            className={`property-button ${
-              activeTransactionType === type
-                ? "bg-blue-500 text-white"
-                : "bg-gray-300 text-black"
-            } py-2 px-6 md:px-8 lg:px-10 rounded-lg border border-gray-400`}
-            onClick={() => handleTransactionChange(type)}
-          >
-            {type.charAt(0).toUpperCase() + type.slice(1)}
-          </button>
-        ))}
-      </div>
-
-      {/* Breadcrumb Section */}
-      <p className="text-gray-500 mb-4 text-sm md:text-base lg:text-lg">
-        renex &gt; Featured &gt;{" "}
-        <span id="activeLabel">
-          {activeTransactionType.charAt(0).toUpperCase() +
-            activeTransactionType.slice(1)}
-        </span>
-      </p>
-
-      {/* Product Grid */}
+      <Gap />
+      <h1 className="text-2xl font-bold mb-4">Recently Viewed Properties</h1>
       <section
         className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
         id="productGrid"
       >
         {loadProperties()} {/* Render properties here */}
       </section>
+      <Gap />
+      <Gap />
     </main>
   );
 };
 
-export default FeacturedAds;
+export default RecentViews;
