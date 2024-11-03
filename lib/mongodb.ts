@@ -1,4 +1,3 @@
-// lib/mongodb.ts
 import { MongoClient } from "mongodb";
 
 const uri = process.env.MONGODB_URI!;
@@ -8,6 +7,12 @@ console.log(uri);
 
 let client: MongoClient;
 let clientPromise: Promise<MongoClient>;
+
+// Extend the NodeJS global object to include `_mongoClientPromise`
+declare global {
+  // eslint-disable-next-line no-var
+  var _mongoClientPromise: Promise<MongoClient> | undefined;
+}
 
 if (process.env.NODE_ENV === "development") {
   // In dev mode, use a global variable so we don't create new connections
