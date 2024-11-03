@@ -1,6 +1,6 @@
 "use client"; // Ensure this component is a client component
 
-import { useParams, useRouter } from "next/navigation";
+import { useParams } from "next/navigation";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Gap from "@/components/Gap";
