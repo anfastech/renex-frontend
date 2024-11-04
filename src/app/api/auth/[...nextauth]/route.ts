@@ -7,7 +7,7 @@ import clientPromise from "../../../../../lib/mongodb"; // Adjust the path as ne
 import type { NextAuthOptions } from "next-auth"; // Use this for NextAuthOptions
 
 // Define authOptions with appropriate types
-export const authOptions: NextAuthOptions = {
+const authOptions: NextAuthOptions = {
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID!,
@@ -20,9 +20,9 @@ export const authOptions: NextAuthOptions = {
       if (user) {
         session.user.id = user.id; // Add user ID to session
         // Add any other user properties if necessary
-        session.user.name = user.name;
-        session.user.email = user.email;
-        session.user.image = user.image;
+        session.user.name = user.name || null;
+        session.user.email = user.email || null;
+        session.user.image = user.image || null;
       }
       return session;
     },
