@@ -4,7 +4,7 @@ import "next-auth"; // Import next-auth types to extend them
 
 declare module "next-auth" {
   interface User {
-    id: string; // Add the ID property here
+    id: string; // Custom property for user ID
     name?: string | null;
     email?: string | null;
     image?: string | null;
@@ -15,12 +15,6 @@ declare module "next-auth" {
   }
 
   interface Session {
-    user: {
-      id: string; // Ensure the session has the user ID
-      name?: string | null;
-      email?: string | null; 
-      image?: string | null; // This will store the user's profile picture
-    };
-    // You can also include other properties if needed
+    user: User; // Ensure the session has the correct User type
   }
 }
