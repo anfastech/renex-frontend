@@ -1,36 +1,34 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Renex
 
-## Getting Started
+**Confidential Full-Stack Project**
 
-First, run the development server:
+## Description
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+Renex is a full-stack application that demonstrates the integration of modern front-end and back-end technologies. It combines dynamic user interfaces with robust server-side logic, providing a scalable and efficient platform.
+
+### Tech Stack
+
+- **Frontend**: Next.js, TailwindCSS
+- **Backend**: Django, FastAPI
+- **Cloud & Deployment**: AWS, Render
+
+This project is ideal for implementing scalable, cloud-native applications with responsive design and dynamic data handling.
+
+## Features
+
+- **Responsive UI**: Built with TailwindCSS for mobile-first, responsive design.
+- **Server-Side Rendering**: Utilizes Next.js for optimized performance.
+- **Robust API Layer**: Django and FastAPI backend for handling complex data and logic.
+- **Cloud Integration**: AWS and Render for secure and scalable cloud deployment.
+
+## Deployment
+
+Renex is set up for cloud deployment with **AWS** and **Render**. Check the deployment scripts and configurations for deploying to these platforms.
+
+## License and Confidentiality
+
+**This project is proprietary and confidential.** Unauthorized use, duplication, distribution, or cloning is strictly prohibited. Access to this repository is limited to authorized users only.
+
+```vbnet
+Console.WriteLine("Access to this project is restricted to authorized users only.")
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.

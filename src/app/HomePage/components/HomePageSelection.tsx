@@ -1,3 +1,5 @@
+"use client"
+import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 
@@ -12,6 +14,13 @@ const HomePageSelection = ({
   redirectUrl = "searchTest.html",
   className = "", // Ensure it has a default empty string
 }: HomePageSelectionProps) => {
+  const [isIconLoaded, setIsIconLoaded] = useState(false);
+
+  useEffect(() => {
+    // Delay showing the icon until component is ready
+    setIsIconLoaded(true);
+  }, []);
+
   const handleClick = () => {
     window.location.href = redirectUrl;
   };
@@ -22,7 +31,9 @@ const HomePageSelection = ({
       onClick={handleClick}
     >
       <span className={`text-gray-500 ${className}`}>{label}</span>
-      <FontAwesomeIcon icon={faAngleDown} className={`text-gray-500 ${className}`} />
+      {isIconLoaded && (
+        <FontAwesomeIcon icon={faAngleDown} className={`text-gray-500 ${className}`} />
+      )}
     </div>
   );
 };
