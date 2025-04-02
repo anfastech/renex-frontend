@@ -171,7 +171,7 @@ const SearchPage = () => {
       <main className="px-4 py-2 md:px-6 lg:px-10">
         {/* <center> */}
         <div className="w-90">
-          <div className="flex flex-col sm:flex-row sm:justify-between gap-2 mb-4 ">
+          <div className="flex flex-row justify-around gap-2 mb-4 ">
             {["rent", "buy", "sell"].map((type) => (
               <button
                 key={type}

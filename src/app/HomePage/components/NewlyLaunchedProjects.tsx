@@ -1,4 +1,8 @@
 import React from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import { Pagination, Autoplay } from 'swiper/modules'; // Removed Navigation module import
+import 'swiper/css/pagination';
 
 const projects = [
   {
@@ -41,35 +45,49 @@ const NewlyLaunchedProjects: React.FC = () => {
       <div className="max-w-7xl mx-auto">
         {/* Section Title */}
         <div className="text-center mb-8">
-          <h2 className="text-2xl font-semibold text-blue-900">Newly Launched Projects</h2>
-          <p className="text-gray-500">Limited launch offers available</p>
+          <h2 className="text-2xl font-semibold text-blue-900">Best Projects of the Year</h2>
+          <p className="text-gray-500">Top Features</p>
         </div>
 
-        {/* Cards Container */}
-        <div className="flex space-x-4 overflow-x-auto no-scrollbar">
+        {/* Swiper Slider without Navigation */}
+        <Swiper
+          modules={[Pagination, Autoplay]}  // Removed Navigation module
+          pagination={{ clickable: true }}
+          spaceBetween={30}
+          slidesPerView={1}
+          autoplay={{ delay: 3000, disableOnInteraction: false }}
+          breakpoints={{
+            640: { slidesPerView: 1 },
+            768: { slidesPerView: 2 },
+            1024: { slidesPerView: 3 },
+          }}
+        >
           {projects.map((project, index) => (
-            <div key={index} className="bg-white rounded-lg shadow-md w-80 flex-shrink-0">
-              <div className="p-4">
-                <div className="flex justify-between items-center mb-2">
-                  <span className="bg-yellow-400 text-yellow-900 text-xs px-2 py-1 rounded">NEW LAUNCH</span>
-                  <span className="text-xs text-blue-700 font-semibold">RERA</span>
+            <SwiperSlide key={index}>
+              <div className="bg-white rounded-lg shadow-md w-full">
+                <div className="p-4">
+                  <div className="flex justify-between items-center mb-2">
+                    <span className="bg-yellow-400 text-yellow-900 text-xs px-2 py-1 rounded">NEW LAUNCH</span>
+                    <span className="text-xs text-blue-700 font-semibold">RERA</span>
+                  </div>
+                  <img src={project.image} alt="project image" className="rounded-lg mb-4 w-full h-auto" />
+                  <h3 className="text-lg font-semibold">{project.title}</h3>
+                  <p className="text-gray-600 text-sm">{project.location}</p>
+                  <p className="text-lg font-semibold text-blue-900">{project.price}</p>
+                  <p className="text-sm text-gray-600">{project.size}</p>
+                  <p className="text-sm text-green-600 font-semibold">{project.priceIncrease}</p>
                 </div>
-                <img src={project.image} alt="project image" className="rounded-lg mb-4 w-full h-auto" />
-                <h3 className="text-lg font-semibold">{project.title}</h3>
-                <p className="text-gray-600 text-sm">{project.location}</p>
-                <p className="text-lg font-semibold text-blue-900">{project.price}</p>
-                <p className="text-sm text-gray-600">{project.size}</p>
-                <p className="text-sm text-green-600 font-semibold">{project.priceIncrease}</p>
+                <div className="p-4 bg-blue-50 flex justify-between items-center">
+                  <span className="text-sm text-gray-500">@zero brokerage</span>
+                  {/* Button Hidden */}
+                  <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-300 hidden">
+                    View Number
+                  </button>
+                </div>
               </div>
-              <div className="p-4 bg-blue-50 flex justify-between items-center">
-                <span className="text-sm text-gray-500">@zero brokerage</span>
-                <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-300">
-                  View Number
-                </button>
-              </div>
-            </div>
+            </SwiperSlide>
           ))}
-        </div>
+        </Swiper>
       </div>
     </div>
   );

@@ -76,7 +76,10 @@ const FeacturedAds: React.FC = () => {
       (item) => item.transactionType === activeTransactionType
     );
 
-    return filteredData.map((item, index) => (
+    // Limit to 6 properties
+    const limitedProperties = filteredData.slice(0, 6);
+
+    return limitedProperties.map((item, index) => (
       <div
         key={item._id}
         className="relative bg-gray-300 flex-col rounded-lg justify-between border border-gray-400 cursor-pointer"
@@ -135,7 +138,7 @@ const FeacturedAds: React.FC = () => {
   return (
     <main className="px-4 py-2 md:px-6 lg:px-10">
       {/* Rent, Buy, Sell Buttons */}
-      <div className="flex flex-col sm:flex-row sm:justify-between gap-2 mb-4">
+      <div className="flex flex-row justify-around gap-2 mb-4">
         {["rent", "buy", "sell"].map((type) => (
           <button
             key={type}

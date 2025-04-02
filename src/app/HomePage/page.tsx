@@ -13,16 +13,21 @@ import NewsletterSubscription from "./components/NewsletterSubscription";
 // import Header from "@/components/Header";
 import HomePageSelection from "./components/HomePageSelection";
 import FeacturedAds from "../Projects/components/FeacturedAds";
+import MiniSteps from "./components/threeStepsMini";
+// import Slider from "../slider/sliderMin";
+import Gap from "@/components/Gap";
 // import NamesComponent from "../Projects/components/NamesCard";
 
 export default function HomePage() {
   return (
     <main className="">
+      {/* <Gap /> */}
       {/* <Header /> */}
+        {/* <Slider /> */}
       <div className="w-full flex justify-center">
-      <div className="w-4/5">
-        <HeroSection />
-      </div>
+        <div className="w-4/5">
+          <HeroSection />
+        </div>
       </div>
       {/* <NamesComponent /> */}
       <div className="container mx-auto p-4 md:p-6">
@@ -34,17 +39,19 @@ export default function HomePage() {
       </div>
       <FeacturedAds />
       {/* RealEstateOptions */}
-      <RealEstateOptions />
+      {/* <RealEstateOptions /> */}
       {/* ThreeStepsSection */}
-      <ThreeStepsSection />
+      {/* <ThreeStepsSection /> */}
+      <MiniSteps />
       {/* AdsForSuggestionSection */}
-      <AdsForSuggestionSection />
+      {/* <AdsForSuggestionSection /> */}
       {/* TopFeaturesSection */}
-      <TopFeaturesSection />
-      {/* GlobalRealEstateBrokerageSection */}
-      <GlobalRealEstateBrokerageSection />
       {/* NewlyLaunchedProjects */}
       <NewlyLaunchedProjects />
+      {/* <TopFeaturesSection /> */}
+      {/* GlobalRealEstateBrokerageSection */}
+      <GlobalRealEstateBrokerageSection />
+
       {/* RentalCollection */}
       <RentalCollection />
       {/* TopCities  */}
