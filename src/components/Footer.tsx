@@ -44,7 +44,7 @@ export default function Footer() {
         <div className="flex justify-between items-center py-2">
           {/* Home Icon */}
           <a href="/" className="flex-col flex justify-center">
-        <button className="focus:outline-none hover:text-blue-600">
+        <button className="focus:outline-none hover:text-blue-600" title="Search">
           <FontAwesomeIcon icon={faHouse} fixedWidth className="w-5 h-5" />
         </button>
         <h1 className="invisiblex md:visible lg:visible">Home</h1>
@@ -52,7 +52,7 @@ export default function Footer() {
 
           {/* Search Icon */}
           <a href="/SearchPage" className="flex-col flex justify-center">
-        <button className="focus:outline-none hover:text-blue-600">
+        <button className="focus:outline-none hover:text-blue-600 " title="Search">
           <FontAwesomeIcon
             icon={faSearch}
             fixedWidth
@@ -64,14 +64,14 @@ export default function Footer() {
 
           {/* Plus Icon */}
           <a href="/AddForm" className="flex-col flex justify-center">
-        <button className="bg-blue-500 text-white rounded-full focus:outline-none w-20 h-20 grid place-items-center">
+        <button className="bg-blue-500 text-white rounded-full focus:outline-none w-20 h-20 grid place-items-center" title="Add">
           <FontAwesomeIcon icon={faPlus} fixedWidth className="w-10 h-10" />
         </button>
           </a>
 
           <a href="/Recent" className="flex-col flex justify-center">
         {/* Star Icon */}
-        <button className="focus:outline-none hover:text-blue-600">
+        <button className="focus:outline-none hover:text-blue-600" title="Recent">
           <FontAwesomeIcon icon={faStar} fixedWidth className="w-5 h-5" />
         </button>
         <h1 className="invisiblex md:visible lg:visible">Recent</h1>
@@ -79,7 +79,7 @@ export default function Footer() {
 
           <a href="/ProfilePage" className="flex-col flex justify-center">
         {/* User Icon */}
-        <button className="focus:outline-none hover:text-blue-600">
+        <button className="focus:outline-none hover:text-blue-600" title="user">
           <FontAwesomeIcon icon={faUser} fixedWidth className="w-5 h-5" />
         </button>
         <h1 className="invisiblex md:visible lg:visible">Profile</h1>

@@ -7,8 +7,8 @@ export default function ImageUploadForm() {
   const [images, setImages] = useState<File[]>([]); // State to store selected images
   const [uploadedUrls, setUploadedUrls] = useState<string[]>([]); // State to store uploaded image URLs
   const [error, setError] = useState<string | null>(null); // State to store any error messages
-  const [propertyType, setPropertyType] = useState<string>("apartment"); // Example for property type input
-  const [pincode, setPincode] = useState<string>("676501"); // Example pincode
+  const [propertyType] = useState<string>("apartment"); // Example for property type input
+  const [pincode] = useState<string>("676501"); // Example pincode
 
   // Function to handle image selection
   const handleImageSelection = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -97,7 +97,8 @@ export default function ImageUploadForm() {
       <Gap />
       <Gap />
       <form onSubmit={handleFormSubmit}>
-        <input type="file" multiple onChange={handleImageSelection} />
+        <label htmlFor="imageUpload">Upload Images:</label>
+        <input id="imageUpload" type="file" multiple onChange={handleImageSelection} />
         <button className="px-4 py-2 border border-transparent rounded-md bg-blue-600 text-white font-semibold text-lg hover:bg-blue-700 transition" type="submit">Upload</button>
       </form>
 

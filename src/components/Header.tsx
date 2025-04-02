@@ -74,7 +74,7 @@ export default function Header({ onMenuToggle }: HeaderProps) {
     <>
       <header className="fixed top-2 left-2 right-2 bg-gray-200 p-4 border border-gray-400 flex justify-between items-center rounded-md z-10 lg:w-1/2 lg:left-1/2 lg:transform lg:-translate-x-1/2 lg:top-4">
         {/* Hamburger Icon */}
-        <button className="text-xl" onClick={handleMenuToggle}>
+        <button className="text-xl" onClick={handleMenuToggle} title="Toggle Menu">
           <FontAwesomeIcon icon={faBars} style={{ color: "black" }} />
         </button>
 
