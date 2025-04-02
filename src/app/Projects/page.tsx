@@ -1,40 +1,37 @@
-// app/room-details/page.tsx
+/* eslint-disable @next/next/no-img-element */
 "use client";
-import React, { useRef, useEffect, useState } from 'react';
-import dynamic from 'next/dynamic';
+import React, { useRef, useMemo } from 'react';
+// import dynamic from 'next/dynamic';
 
 // Dynamically import react-slick with no SSR
-const Slider = dynamic(() => import('react-slick'), { ssr: false });
+import ReactSlick from 'react-slick';
+
+const Slider = React.forwardRef<ReactSlick, React.ComponentProps<typeof ReactSlick>>((props, ref) => (
+  <ReactSlick {...props} ref={ref} />
+));
+Slider.displayName = 'Slider';
 
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import 'boxicons/css/boxicons.min.css';
 
 const RoomDetailsPage: React.FC = () => {
-  const mainSliderRef = useRef<typeof Slider | null>(null);  // Create reference for the main slider
-  const [sliderInitialized, setSliderInitialized] = useState(false);
+  const mainSliderRef = useRef<React.ElementRef<typeof Slider> | null>(null); // Create reference for the main slider
 
-  useEffect(() => {
-    // Wait until both sliders are initialized to avoid asNavFor reference issues
-    if (mainSliderRef.current) {
-      setSliderInitialized(true);
-    }
-  }, []);
-
-  const mainSliderSettings = {
+  const mainSliderSettings = useMemo(() => ({
     arrows: true,
     slidesToShow: 1,
     slidesToScroll: 1,
     fade: true,
-    asNavFor: sliderInitialized ? (mainSliderRef.current as Slider) : undefined,  // Ensure correct type for asNavFor
-  };
+    asNavFor: mainSliderRef.current || undefined, // Ensure correct type for asNavFor
+  }), []);
 
-  const thumbnailSliderSettings = {
+  const thumbnailSliderSettings = useMemo(() => ({
     slidesToShow: 4,
     slidesToScroll: 1,
     focusOnSelect: true,
-    asNavFor: sliderInitialized ? mainSliderRef.current : undefined,  // Check if slider is initialized
-  };
+    asNavFor: mainSliderRef.current || undefined, // Check if slider is initialized
+  }), []);
 
   return (
     <section className="wrapper p-4 md:p-8 bg-gray-50">
@@ -50,30 +47,34 @@ const RoomDetailsPage: React.FC = () => {
             <h3 className="text-xl font-bold text-green-600 transition-transform duration-200 hover:text-green-700">290,000 $</h3>
           </div>
 
-          <Slider
-            {...mainSliderSettings}
-            ref={mainSliderRef}  // Set reference for the main slider
-            className="mainSlider rounded-lg overflow-hidden h-64 md:h-80 shadow-lg"
-          >
-            <div><img src="/images/Rectangle 47.png" alt="Property Image 1" /></div>
-            <div><img src="/images/MP0bgaS_d1c.png" alt="Property Image 2" /></div>
-            <div><img src="/images/Wp7t4cWN-68.png" alt="Property Image 3" /></div>
-          </Slider>
+          {Slider && (
+            <>
+              <Slider
+                {...mainSliderSettings}
+                ref={mainSliderRef} // Set reference for the main slider
+                className="mainSlider rounded-lg overflow-hidden h-64 md:h-80 shadow-lg"
+              >
+                <div><img src="/images/Rectangle 47.png" alt="Property Image 1" loading="lazy" /></div>
+                <div><img src="/images/MP0bgaS_d1c.png" alt="Property Image 2" loading="lazy" /></div>
+                <div><img src="/images/Wp7t4cWN-68.png" alt="Property Image 3" loading="lazy" /></div>
+              </Slider>
 
-          <Slider
-            {...thumbnailSliderSettings}
-            className="thumbnailSlider mt-4 h-24 overflow-hidden rounded-lg"
-          >
-            <div><img src="/images/Rectangle 47.png" alt="Thumbnail 1" /></div>
-            <div><img src="/images/MP0bgaS_d1c.png" alt="Thumbnail 2" /></div>
-            <div><img src="/images/Wp7t4cWN-68.png" alt="Thumbnail 3" /></div>
-          </Slider>
+              <Slider
+                {...thumbnailSliderSettings}
+                className="thumbnailSlider mt-4 h-24 overflow-hidden rounded-lg"
+              >
+                <div><img src="/images/Rectangle 47.png" alt="Thumbnail 1" loading="lazy" /></div>
+                <div><img src="/images/MP0bgaS_d1c.png" alt="Thumbnail 2" loading="lazy" /></div>
+                <div><img src="/images/Wp7t4cWN-68.png" alt="Thumbnail 3" loading="lazy" /></div>
+              </Slider>
+            </>
+          )}
         </div>
 
         {/* Contact Agent Section */}
         <div className="shadow-md bg-white rounded-lg p-6 w-full md:w-1/3 hover:shadow-xl transition-transform duration-300 ease-in-out transform hover:scale-105">
           <div className="text-center">
-            <img src="/images/Ellipse 2.png" alt="Agent" className="mx-auto mb-4 w-20 h-20 rounded-full border-4 border-blue-200 transition-transform duration-300 ease-in-out transform hover:scale-110" />
+            <img src="/images/Ellipse 2.png" alt="Agent Profile" className="mx-auto mb-4 w-20 h-20 rounded-full border-4 border-blue-200 transition-transform duration-300 ease-in-out transform hover:scale-110" />
             <h3 className="py-2 text-lg font-semibold text-gray-800 fade-in">Micheal James</h3>
             <h4 className="text-gray-500 mb-4 fade-in delay-100">Real Estate Specialist</h4>
             <a href="#" className="py-2 px-5 bg-gradient-to-r from-green-500 to-green-600 text-white rounded-full shadow-lg hover:bg-green-700 transition-all duration-200 inline-flex items-center gap-2 transform hover:scale-105">
@@ -111,18 +112,9 @@ const RoomDetailsPage: React.FC = () => {
       <div className="mt-8">
         <h2 className="text-xl font-semibold text-gray-800">Location Information</h2>
         <div className="shadow-md bg-white mt-4 py-4 px-4 rounded-lg">
-          <img src="/images/Mapsicle Map.png" alt="Map Location" className="w-full rounded-lg shadow-md" />
+          <img src="/images/Mapsicle Map.png" alt="Map Location" className="w-full rounded-lg shadow-md" loading="lazy" />
         </div>
       </div>
-
-      <style jsx>{`
-        @keyframes fadeIn {
-          0% { opacity: 0; transform: translateY(10px); }
-          100% { opacity: 1; transform: translateY(0); }
-        }
-        .fade-in { animation: fadeIn 0.6s ease-in-out both; }
-        .fade-in.delay-100 { animation-delay: 0.1s; }
-      `}</style>
     </section>
   );
 };
