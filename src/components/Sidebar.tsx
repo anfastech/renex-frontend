@@ -1,4 +1,3 @@
-// src/app/components/Sidebar.tsx
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faThLarge, faBook, faUserFriends, faComments, faCog, faLock } from '@fortawesome/free-solid-svg-icons';
 import { useState } from 'react';

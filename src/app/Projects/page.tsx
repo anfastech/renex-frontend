@@ -11,7 +11,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import 'boxicons/css/boxicons.min.css';
 
 const RoomDetailsPage: React.FC = () => {
-  const mainSliderRef = useRef<Slider | null>(null);  // Create reference for the main slider
+  const mainSliderRef = useRef<typeof Slider | null>(null);  // Create reference for the main slider
   const [sliderInitialized, setSliderInitialized] = useState(false);
 
   useEffect(() => {
@@ -26,7 +26,7 @@ const RoomDetailsPage: React.FC = () => {
     slidesToShow: 1,
     slidesToScroll: 1,
     fade: true,
-    asNavFor: sliderInitialized ? mainSliderRef.current : undefined,  // Check if slider is initialized
+    asNavFor: sliderInitialized ? (mainSliderRef.current as Slider) : undefined,  // Ensure correct type for asNavFor
   };
 
   const thumbnailSliderSettings = {

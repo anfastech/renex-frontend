@@ -1,6 +1,6 @@
 'use client'; 
 import localFont from "next/font/local";
-import "../styles/globals.css";
+import "@/styles/globals.css";
 import Head from "next/head";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -55,7 +55,6 @@ export default function RootLayout({
           <div className="rounded-lg border m-2 lg:mt-72 lg:sticky lg:top-48 invisible lg:visible h-64">
             <Image className="rounded-lg" src="/images/slider1111.jpeg" width={500} height={300} alt="Renex Shader" />
             <br />
-            {/* <Image className="rounded-lg" src="/images/sldier11.jpeg" width={500} height={300} alt="Renex Shader" /> */}
             </div>
         </SessionProvider>
       </body>
