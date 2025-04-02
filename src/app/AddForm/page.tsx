@@ -5,7 +5,6 @@ import InputField from "./components/InputField";
 import Footer from "@/components/Footer";
 import Gap from "@/components/Gap";
 
-const DEFAULT_IMAGE_URL = "project-1.png";
 
 export default function AddForm() {
   const [adTitle, setAdTitle] = useState("Good");
@@ -121,7 +120,7 @@ export default function AddForm() {
           {/* Image Upload Field */}
           <div className="mb-4">
             <label className="block text-gray-700 font-semibold mb-2">Upload Image(s)</label>
-            <input type="file" accept="image/*" multiple onChange={handleImageChange} />
+            <input type="file" accept="image/*" multiple onChange={handleImageChange} title="input"/>
             <p className="text-gray-500 text-sm">You can upload up to 2 images.</p>
           </div>
 

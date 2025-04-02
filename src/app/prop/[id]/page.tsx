@@ -1,9 +1,10 @@
+/* eslint-disable @next/next/no-img-element */
 "use client"; // Ensure this component is a client component
 
 import { useParams } from "next/navigation";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import Gap from "@/components/Gap";
+// import Gap from "@/components/Gap";
 import { useSession, signIn } from "next-auth/react"; // Import useSession and signIn
 import Slider from "react-slick"; // Assuming you are using react-slick for sliders
 
@@ -77,7 +78,7 @@ const PropertyPage = () => {
   }, [id, session, status]);
 
   if (!property) {
-    return <div>Property not found</div>; // Display message if property is not found
+    return <div>Property not found</div>; 
   }
 
   return (
@@ -87,7 +88,6 @@ const PropertyPage = () => {
       </h3>
 
       <div className="flex flex-col md:flex-row gap-8">
-        {/* Image Carousel Section */}
         <div className="md:w-3/5">
           <div className="flex justify-between items-center mb-4 text-gray-600 bg-white p-4 rounded-lg shadow hover:shadow-lg transition-shadow duration-300 ease-in-out">
             <div className="flex items-center gap-3">
